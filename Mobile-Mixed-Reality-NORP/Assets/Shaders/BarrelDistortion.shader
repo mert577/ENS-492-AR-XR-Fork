@@ -50,6 +50,8 @@
                 float offset;
 
                 // uv1 is the remap of left and right screen to a full screen
+
+                // change 2.4 and 1.2 coefficients to adjust size for uv1.x and uv1.y
                 uv1 = i.uv - 0.5;
                 uv1.x = uv1.x * 2.4 - 0.5 + step(i.uv.x, 0.5);
                 uv1.y = uv1.y * 1.2;
