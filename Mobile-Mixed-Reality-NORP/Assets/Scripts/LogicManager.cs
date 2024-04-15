@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class LogicManager : MonoBehaviour
 {
 
-    [SerializeField] GameObject erkaySavas;
     [SerializeField] GameObject gameCamera;
 
     // Start is called before the first frame update
@@ -21,7 +20,7 @@ public class LogicManager : MonoBehaviour
         
     }
 
-    public void SpawnHoca()
+    public GameObject SpawnHoca(GameObject hoca)
     {
         // Get the forward direction of the camera
         Vector3 cameraForward = gameCamera.transform.forward;
@@ -32,15 +31,25 @@ public class LogicManager : MonoBehaviour
         // Now you have the dominant x-z direction
         Debug.Log("Dominant x-z direction: " + cameraForwardXZ);
 
-        GameObject erkaySavasNew = Instantiate(erkaySavas, gameCamera.transform.position + (cameraForwardXZ), Quaternion.identity);
-        erkaySavasNew.transform.position = new Vector3(erkaySavasNew.transform.position.x, gameCamera.transform.position.y - 1.8f, erkaySavasNew.transform.position.z);
+        GameObject hocaNew = Instantiate(hoca, gameCamera.transform.position + (cameraForwardXZ * 1.8f), Quaternion.identity);
+        hocaNew.transform.position = new Vector3(hocaNew.transform.position.x, gameCamera.transform.position.y - 1.8f, hocaNew.transform.position.z);
         
         // rotate y by 180
-        Transform erkaySavasTransform = erkaySavasNew.transform;
+        Transform hocaTransform = hocaNew.transform;
         Quaternion newRotation = Quaternion.Euler(0f, 180f, 0f);
-        erkaySavasTransform.rotation = newRotation;
+        hocaTransform.rotation = newRotation;
 
-        erkaySavasNew.SetActive(true);
+        hocaNew.SetActive(true);
+
+        return hocaNew;
+    }
+
+    public void AttachAudio(GameObject hoca, GameObject hocaAudio)
+    {
+        hocaAudio.transform.SetParent(hoca.transform);
+        hocaAudio.transform.localPosition = Vector3.zero;
+        hocaAudio.GetComponent<AudioSource>().Stop();
+        hocaAudio.GetComponent<AudioSource>().Play();
     }
 
     public void GoToSabanciIntroScene()

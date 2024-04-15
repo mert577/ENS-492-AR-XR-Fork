@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class LookInteraction : MonoBehaviour
 {
+    [SerializeField] GameObject erkaySavas;
+    [SerializeField] GameObject kursatHoca;
+
+    [SerializeField] GameObject audioSource;
+
+    [SerializeField] AudioClip erkaySavasClip;
+    [SerializeField] AudioClip kursatHocaClip;
 
     [SerializeField] float raycastDistance;
     [SerializeField] GameObject gameCamera;
@@ -53,13 +60,26 @@ public class LookInteraction : MonoBehaviour
 
             Debug.Log("Hit something at: " + collidedUI.name);
 
-            if (collidedUI.name == "SpawnHoca1")
+            if (collidedUI.name == "SpawnErkayHoca")
             {
                 StartLookInteraction(collidedUI);
 
                 if (timeElapsed >= requiredTime)
                 {
-                    logicManager.SpawnHoca();                  
+                    GameObject hocaNew = logicManager.SpawnHoca(erkaySavas);
+                    audioSource.GetComponent<AudioSource>().clip = erkaySavasClip;
+                    logicManager.AttachAudio(hocaNew, audioSource);
+                    AdjustLoadingMaskBack(loadingMask);
+                }
+            }else if (collidedUI.name == "SpawnKursatHoca")
+            {
+                StartLookInteraction(collidedUI);
+
+                if (timeElapsed >= requiredTime)
+                {
+                    GameObject hocaNew = logicManager.SpawnHoca(kursatHoca);
+                    audioSource.GetComponent<AudioSource>().clip = kursatHocaClip;
+                    logicManager.AttachAudio(hocaNew, audioSource);
                     AdjustLoadingMaskBack(loadingMask);
                 }
             }
