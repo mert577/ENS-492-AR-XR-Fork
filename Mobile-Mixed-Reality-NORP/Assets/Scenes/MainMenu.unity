@@ -177,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5009531011465614580, guid: ff79ef43574379c4e8fbea191962fc27, type: 3}
       propertyPath: m_text
-      value: Introduce Sabanci University
+      value: "Introduce Sabanc\u0131 University"
       objectReference: {fileID: 0}
     - target: {fileID: 5339724298182559089, guid: ff79ef43574379c4e8fbea191962fc27, type: 3}
       propertyPath: interactableType
