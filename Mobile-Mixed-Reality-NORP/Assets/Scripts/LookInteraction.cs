@@ -11,6 +11,7 @@ public class LookInteraction : MonoBehaviour
 
     [SerializeField] AudioClip erkaySavasClip;
     [SerializeField] AudioClip kursatHocaClip;
+    [SerializeField] AudioClip popSoundClip;
 
     [SerializeField] float raycastDistance;
     [SerializeField] GameObject gameCamera;
@@ -19,6 +20,11 @@ public class LookInteraction : MonoBehaviour
     private LogicManager logicManager;
     private float timeElapsed = 0f;
     [SerializeField] float requiredTime;
+
+
+    private GameObject ErkayHocaScene;
+    private GameObject KursatHocaScene;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,16 +47,25 @@ public class LookInteraction : MonoBehaviour
         // Declare a list to store all hits
         List<RaycastHit> hits = new List<RaycastHit>();
 
-        // Check if something is hit by the ray and store all hits
+
+        // Perform raycast and store hits for objects with the "Interactable" tag
         RaycastHit[] allHits = Physics.RaycastAll(ray, raycastDistance);
-        if (allHits.Length > 0)
-        {
-            hits.AddRange(allHits);
-        }
-        else
+
+        if (allHits.Length <= 0)
         {
             AdjustLoadingMaskBack(loadingMask);
         }
+
+        foreach (RaycastHit hit in allHits)
+        {
+            if (hit.collider.CompareTag("Interactable"))
+            {
+                // Add the hit to the list
+                hits.Add(hit);
+            }
+        }
+
+
 
 
         // Check if something is hit by the ray
@@ -60,53 +75,113 @@ public class LookInteraction : MonoBehaviour
 
             Debug.Log("Hit something at: " + collidedUI.name);
 
-            if (collidedUI.name == "SpawnErkayHoca")
-            {
-                StartLookInteraction(collidedUI);
+            InteractableObject interactableObject = collidedUI.GetComponent<InteractableObject>();
 
-                if (timeElapsed >= requiredTime)
-                {
-                    GameObject hocaNew = logicManager.SpawnHoca(erkaySavas);
-                    audioSource.GetComponent<AudioSource>().clip = erkaySavasClip;
-                    logicManager.AttachAudio(hocaNew, audioSource);
+            switch (interactableObject.interactableType)
+            {
+                case InteractableType.SpawnErkayHoca:
+                    StartLookInteraction(collidedUI);
+                    if (timeElapsed >= requiredTime)
+                    {
+                        ErkayHocaScene = logicManager.SpawnHoca(erkaySavas);
+                        audioSource.GetComponent<AudioSource>().clip = erkaySavasClip;
+                        logicManager.AttachAudio(ErkayHocaScene, audioSource);
+                        AdjustLoadingMaskBack(loadingMask);
+                    }
+                    break;
+
+                case InteractableType.SpawnKursatHoca:
+                    StartLookInteraction(collidedUI);
+                    if (timeElapsed >= requiredTime)
+                    {
+                        KursatHocaScene = logicManager.SpawnHoca(kursatHoca);
+                        audioSource.GetComponent<AudioSource>().clip = kursatHocaClip;
+                        logicManager.AttachAudio(KursatHocaScene, audioSource);
+                        AdjustLoadingMaskBack(loadingMask);
+                    }
+                    break;
+
+                case InteractableType.SabanciIntroButton:
+                    StartLookInteraction(collidedUI);
+                    if (timeElapsed >= requiredTime)
+                    {
+                        logicManager.GoToSabanciIntroScene();
+                        AdjustLoadingMaskBack(loadingMask);
+                    }
+                    break;
+
+                case InteractableType.MainMenuButton:
+                    StartLookInteraction(collidedUI);
+                    if (timeElapsed >= requiredTime)
+                    {
+                        logicManager.GoToMainMenu();
+                        AdjustLoadingMaskBack(loadingMask);
+                    }
+                    break;
+
+                case InteractableType.ErkayHocaDialog1:
+                    StartLookInteraction(collidedUI);
+                    if (timeElapsed >= requiredTime)
+                    {
+                        audioSource.GetComponent<AudioSource>().clip = kursatHocaClip;
+                        logicManager.AttachAudio(ErkayHocaScene, audioSource);
+                        AdjustLoadingMaskBack(loadingMask);
+                    }
+                    break;
+
+                case InteractableType.ErkayHocaDialog2:
+                    StartLookInteraction(collidedUI);
+                    if (timeElapsed >= requiredTime)
+                    {
+                        audioSource.GetComponent<AudioSource>().clip = erkaySavasClip;
+                        logicManager.AttachAudio(ErkayHocaScene, audioSource);
+                        AdjustLoadingMaskBack(loadingMask);
+                    }
+                    break;
+
+                case InteractableType.ErkayHocaDialog3:
+                    StartLookInteraction(collidedUI);
+                    if (timeElapsed >= requiredTime)
+                    {
+                        audioSource.GetComponent<AudioSource>().clip = popSoundClip;
+                        logicManager.AttachAudio(ErkayHocaScene, audioSource);
+                        AdjustLoadingMaskBack(loadingMask);
+                    }
+                    break;
+
+                case InteractableType.KursatHocaDialog1:
+                    StartLookInteraction(collidedUI);
+                    if (timeElapsed >= requiredTime)
+                    {
+                        audioSource.GetComponent<AudioSource>().clip = erkaySavasClip;
+                        logicManager.AttachAudio(KursatHocaScene, audioSource);
+                        AdjustLoadingMaskBack(loadingMask);
+                    }
+                    break;
+
+                case InteractableType.KursatHocaDialog2:
+                    StartLookInteraction(collidedUI);
+                    if (timeElapsed >= requiredTime)
+                    {
+                        audioSource.GetComponent<AudioSource>().clip = kursatHocaClip;
+                        logicManager.AttachAudio(KursatHocaScene, audioSource);
+                        AdjustLoadingMaskBack(loadingMask);
+                    }
+                    break;
+
+                case InteractableType.KursatHocaDialog3:
+                    StartLookInteraction(collidedUI);
+                    if (timeElapsed >= requiredTime)
+                    {
+                        audioSource.GetComponent<AudioSource>().clip = popSoundClip;
+                        logicManager.AttachAudio(KursatHocaScene, audioSource);
+                        AdjustLoadingMaskBack(loadingMask);
+                    }
+                    break;
+
+                default:
                     AdjustLoadingMaskBack(loadingMask);
-                }
-            }else if (collidedUI.name == "SpawnKursatHoca")
-            {
-                StartLookInteraction(collidedUI);
-
-                if (timeElapsed >= requiredTime)
-                {
-                    GameObject hocaNew = logicManager.SpawnHoca(kursatHoca);
-                    audioSource.GetComponent<AudioSource>().clip = kursatHocaClip;
-                    logicManager.AttachAudio(hocaNew, audioSource);
-                    AdjustLoadingMaskBack(loadingMask);
-                }
-            }
-            else if (collidedUI.name == "SabanciIntroButton")
-            {
-                StartLookInteraction(collidedUI);
-
-                if (timeElapsed >= requiredTime)
-                {
-                    logicManager.GoToSabanciIntroScene();
-                    AdjustLoadingMaskBack(loadingMask);
-                }
-            }
-            else if (collidedUI.name == "MainMenuButton")
-            {
-                StartLookInteraction(collidedUI);
-
-                if (timeElapsed >= requiredTime)
-                {
-                    logicManager.GoToMainMenu();
-                    AdjustLoadingMaskBack(loadingMask);
-                }
-            }
-            else
-            {
-                AdjustLoadingMaskBack(loadingMask);
-
+                    break;
             }
         }
 
