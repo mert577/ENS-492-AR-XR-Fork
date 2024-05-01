@@ -149,14 +149,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165092398}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.16248958, y: -0.68818396, z: -0.16248958, w: 0.68818396}
-  m_LocalPosition: {x: -10, y: 5, z: 0}
+  m_LocalRotation: {x: -0.09229599, y: -0.7010574, z: -0.09229599, w: 0.7010574}
+  m_LocalPosition: {x: -10, y: 2.68, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1871420590}
   m_Father: {fileID: 1645817478}
-  m_LocalEulerAnglesHint: {x: -26.57, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: -15, y: -90, z: 0}
 --- !u!65 &165092400
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -256,14 +256,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260704905}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.22979496, y: 0, z: 0, w: 0.97323906}
-  m_LocalPosition: {x: 0, y: 5, z: 10}
+  m_LocalRotation: {x: -0.13052624, y: 0, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 2.68, z: 10}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1785959602}
   m_Father: {fileID: 1645817478}
-  m_LocalEulerAnglesHint: {x: -26.57, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -15, y: 0, z: 0}
 --- !u!212 &260704907
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -374,6 +374,7 @@ MonoBehaviour:
   raycastDistance: 20
   gameCamera: {fileID: 1192822350}
   loadingMask: {fileID: 1162041559}
+  requiredTime: 2
 --- !u!4 &329906544
 Transform:
   m_ObjectHideFlags: 0
@@ -475,14 +476,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415788693}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.16248958, y: 0.68818396, z: 0.16248958, w: 0.68818396}
-  m_LocalPosition: {x: 10, y: 5, z: 0}
+  m_LocalRotation: {x: -0.09229599, y: 0.7010574, z: 0.09229599, w: 0.7010574}
+  m_LocalPosition: {x: 10, y: 2.68, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1851593773}
   m_Father: {fileID: 1645817478}
-  m_LocalEulerAnglesHint: {x: -26.57, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: -15, y: 90, z: 0}
 --- !u!65 &415788695
 BoxCollider:
   m_ObjectHideFlags: 0

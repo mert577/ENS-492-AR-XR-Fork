@@ -18,7 +18,7 @@ public class LookInteraction : MonoBehaviour
 
     private LogicManager logicManager;
     private float timeElapsed = 0f;
-    private float requiredTime = 3f;
+    [SerializeField] float requiredTime;
 
     // Start is called before the first frame update
     void Start()

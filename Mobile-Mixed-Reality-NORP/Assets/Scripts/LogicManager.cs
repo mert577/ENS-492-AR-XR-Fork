@@ -31,7 +31,7 @@ public class LogicManager : MonoBehaviour
         // Now you have the dominant x-z direction
         Debug.Log("Dominant x-z direction: " + cameraForwardXZ);
 
-        GameObject hocaNew = Instantiate(hoca, gameCamera.transform.position + (cameraForwardXZ * 1.8f), Quaternion.identity);
+        GameObject hocaNew = Instantiate(hoca, gameCamera.transform.position + (cameraForwardXZ * 2f), Quaternion.identity);
         hocaNew.transform.position = new Vector3(hocaNew.transform.position.x, gameCamera.transform.position.y - 1.8f, hocaNew.transform.position.z);
         
         // rotate y by 180
