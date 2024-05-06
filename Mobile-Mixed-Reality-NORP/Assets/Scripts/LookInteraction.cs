@@ -179,6 +179,15 @@ public class LookInteraction : MonoBehaviour
                     }
                     break;
 
+                case InteractableType.GotoLocationScene:
+                    StartLookInteraction(collidedUI);
+                    if (timeElapsed >= requiredTime)
+                    {
+                        logicManager.GoToLocationScene();
+                        AdjustLoadingMaskBack(loadingMask);
+                    }
+                    break;
+
                 default:
                     AdjustLoadingMaskBack(loadingMask);
                     break;

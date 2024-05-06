@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LogicManager : MonoBehaviour
 {
@@ -52,6 +53,7 @@ public class LogicManager : MonoBehaviour
         hocaAudio.GetComponent<AudioSource>().Play();
     }
 
+
     public void GoToSabanciIntroScene()
     {
         SceneManager.LoadScene("SabanciIntro");
@@ -60,5 +62,74 @@ public class LogicManager : MonoBehaviour
     public void GoToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void GoToLocationScene()
+    {
+        SceneManager.LoadScene("SabanciLocation");
+    }
+
+
+
+
+
+
+    public void TextPopUp(GameObject prefab, string msg)
+    {
+        Vector3 cameraForward = gameCamera.transform.forward;
+        Vector3 cameraForwardXZ = new Vector3(cameraForward.x, 0f, cameraForward.z).normalized;
+        Vector3 newPosition = gameCamera.transform.position + (cameraForwardXZ * 3f);
+
+        GameObject newTextObject = Instantiate(prefab, newPosition, Quaternion.identity);
+        TextMeshPro textMesh = newTextObject.GetComponent<TextMeshPro>();
+
+        if (textMesh != null)
+        {
+            textMesh.text = msg;
+            // textMesh.font = fontAsset;
+            StartCoroutine(ShowAndDisappearText(textMesh));
+        }
+        else
+        {
+            Debug.LogError("No TextMeshPro component found on the provided prefab.");
+            Destroy(newTextObject);
+        }
+    }
+
+    IEnumerator ShowAndDisappearText(TextMeshPro textMesh)
+    {
+        // Initial scale of the text
+        Vector3 initialScale = textMesh.transform.localScale;
+        // Scale for the "glow up" effect
+        Vector3 glowUpScale = initialScale * 1.5f;
+
+        // Show the text with a glow up effect
+        float timer = 0f;
+        while (timer < 1f) // Adjust duration of the glow up effect as needed
+        {
+            textMesh.transform.localScale = Vector3.Lerp(initialScale, glowUpScale, timer / 0.5f);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        // Reset scale
+        textMesh.transform.localScale = initialScale;
+
+        // Wait for a short duration
+        yield return new WaitForSeconds(1f); // Adjust the duration the text stays visible
+
+        // Fade out effect
+        timer = 0f;
+        Color initialColor = textMesh.color;
+        Color transparentColor = new Color(initialColor.r, initialColor.g, initialColor.b, 0f);
+        while (timer < 1f) // Adjust duration of the fade out effect as needed
+        {
+            textMesh.color = Color.Lerp(initialColor, transparentColor, timer);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        // Destroy the text object after it disappears
+        Destroy(textMesh.gameObject);
     }
 }

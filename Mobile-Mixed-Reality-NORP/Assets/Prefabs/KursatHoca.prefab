@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c2c3586afe1fd429bdef2bb84c5d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  adjustRotationY: 1
 --- !u!4 &1037462739092498454 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400082, guid: bdd7a03fd93bf2d4cb6babd63ceabee8, type: 3}

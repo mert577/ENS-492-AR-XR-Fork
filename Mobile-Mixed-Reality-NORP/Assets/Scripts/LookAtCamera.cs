@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class LookAtCamera : MonoBehaviour
 {
+    [SerializeField] float adjustRotationY = 1;
     private Transform mainCameraTransform;
 
     private void Start()
@@ -29,7 +30,7 @@ public class LookAtCamera : MonoBehaviour
             Vector3 directionToCamera = mainCameraTransform.position - transform.position;
 
             // Set the rotation to look at the camera along the y-axis
-            transform.rotation = Quaternion.LookRotation(new Vector3(directionToCamera.x, 0, directionToCamera.z));
+            transform.rotation = Quaternion.LookRotation(new Vector3(adjustRotationY * directionToCamera.x, 0, adjustRotationY * directionToCamera.z));
         }
     }
 }
