@@ -45,12 +45,12 @@ public class LogicManager : MonoBehaviour
         return hocaNew;
     }
 
-    public void AttachAudio(GameObject hoca, GameObject hocaAudio)
+    public void AttachAudio(GameObject hoca, GameObject Audio)
     {
-        hocaAudio.transform.SetParent(hoca.transform);
-        hocaAudio.transform.localPosition = Vector3.zero;
-        hocaAudio.GetComponent<AudioSource>().Stop();
-        hocaAudio.GetComponent<AudioSource>().Play();
+        Audio.transform.SetParent(hoca.transform);
+        Audio.transform.localPosition = Vector3.zero;
+        Audio.GetComponent<AudioSource>().Stop();
+        Audio.GetComponent<AudioSource>().Play();
     }
 
 
