@@ -25,43 +25,47 @@ public class LocationManager : MonoBehaviour
     // location based --> cafeteria
     [SerializeField] float cafeteriaLatitude = 40.8913894f;
     [SerializeField] float cafeteriaLongitude = 29.3798876f;
-    [SerializeField] List<GameObject> cafeteriaCollectables;
+    [SerializeField] List<GameObject> cafeteriaObjects;
     [SerializeField] AudioClip CafeteriaClip;
 
     // location based --> IC
     [SerializeField] float ICLatitude = 40.89021f;
     [SerializeField] float ICLongitude = 29.37744f;
-    [SerializeField] List<GameObject> ICCollectables;
+    [SerializeField] List<GameObject> ICObjects;
     [SerializeField] AudioClip ICClip;
 
 
     // location based --> grass
     [SerializeField] float grassLatitude = 40.8913442f;
     [SerializeField] float grassLongitude = 29.3791577f;
-    [SerializeField] List<GameObject> grassCollectables;
+    [SerializeField] List<GameObject> grassObjects;
     [SerializeField] AudioClip GrassClip;
 
     // location based --> FENS
     [SerializeField] float FENSLatitude = 40.8906637f;
     [SerializeField] float FENSLongitude = 29.3797448f;
-    [SerializeField] List<GameObject> FENSCollectables;
+    [SerializeField] List<GameObject> FENSObjects;
     [SerializeField] AudioClip FENSClip;
     
 
     // location based --> FMAN
     [SerializeField] float FMANLatitude = 40.8920220f;
     [SerializeField] float FMANLongitude = 29.3790876f;
+    [SerializeField] List<GameObject> FMANObjects;
     [SerializeField] AudioClip FMANClip;
 
 
     // location based --> Dorms
     [SerializeField] float DormsLatitude = 40.892652f;
     [SerializeField] float DormsLongitude = 29.382913f;
+    [SerializeField] List<GameObject> DormObjects;
     [SerializeField] AudioClip DormsClip;
 
 
 
     private LogicManager logicManager;
+    private ObjectInitializer objectInitializer;
+
     private float _Distance;
     // private float timer = 0f;
     // private float checkInterval = 1f;
@@ -78,7 +82,8 @@ public class LocationManager : MonoBehaviour
     {
         LocationText = LocationTextGO.GetComponent<TextMeshPro>();
         logicManager = FindObjectOfType<LogicManager>();
-
+        objectInitializer = FindObjectOfType<ObjectInitializer>();
+        // objectInitializer.InitializeObjectsInCircle(ICObjects);
         #if UNITY_ANDROID
         if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
         {
@@ -130,6 +135,8 @@ public class LocationManager : MonoBehaviour
                     _audioSource.clip = CafeteriaClip;
                     _audioSource.Stop();
                     _audioSource.Play();
+
+                    objectInitializer.InitializeObjectsInCircle(cafeteriaObjects);
                 }
             }
             // FENS
@@ -143,8 +150,11 @@ public class LocationManager : MonoBehaviour
                     _audioSource.clip = FENSClip;
                     _audioSource.Stop();
                     _audioSource.Play();
+
+                    objectInitializer.InitializeObjectsInCircle(FENSObjects);
+
                 }
-                    
+
             }
 
             //grass
@@ -158,6 +168,9 @@ public class LocationManager : MonoBehaviour
                     _audioSource.clip = GrassClip;
                     _audioSource.Stop();
                     _audioSource.Play();
+
+                    objectInitializer.InitializeObjectsInCircle(grassObjects);
+
                 }
             }
             // FMAN
@@ -171,6 +184,9 @@ public class LocationManager : MonoBehaviour
                     _audioSource.clip = FMANClip;
                     _audioSource.Stop();
                     _audioSource.Play();
+
+                    objectInitializer.InitializeObjectsInCircle(FMANObjects);
+
                 }
             }
             // IC
@@ -184,6 +200,9 @@ public class LocationManager : MonoBehaviour
                     _audioSource.clip = ICClip;
                     _audioSource.Stop();
                     _audioSource.Play();
+
+                    objectInitializer.InitializeObjectsInCircle(ICObjects);
+
                 }
             }
             // dorms (A4)
@@ -197,17 +216,29 @@ public class LocationManager : MonoBehaviour
                     _audioSource.clip = DormsClip;
                     _audioSource.Stop();
                     _audioSource.Play();
+
+                    objectInitializer.InitializeObjectsInCircle(DormObjects);
+
                 }
             }
             else
             {
+                if (alreadyInBuilding)
+                {
+                    objectInitializer.DestroyObjectsWithTag("TempLocationObject");
+                }
                 alreadyInBuilding = false;
-                LocationText.text = "Unknown Location. Closest Location =>" + minDistancedPlace + ": " + minDistance.ToString() + " meters";
+                LocationText.text = "Unknown Location. Closest =>" + minDistancedPlace + ": " + minDistance.ToString() + " m";
                 //healthText.text = "90";
+
             }
         }
         else
         {
+            if (alreadyInBuilding)
+            {
+                objectInitializer.DestroyObjectsWithTag("TempLocationObject");
+            }
             alreadyInBuilding = false;
             LocationText.text = "Location not verified...";
 
@@ -219,6 +250,7 @@ public class LocationManager : MonoBehaviour
             {
                 Input.location.Start();
             }
+
         }
         // }
     }
