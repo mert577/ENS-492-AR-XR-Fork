@@ -8,6 +8,7 @@ TagManager:
   - ErkayHoca
   - KursatHoca
   - TempLocationObject
+  - TargetPosition
   layers:
   - Default
   - TransparentFX

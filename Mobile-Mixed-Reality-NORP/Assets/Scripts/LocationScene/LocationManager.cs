@@ -18,6 +18,7 @@ public class LocationManager : MonoBehaviour
     [SerializeField] GameObject LocationTextGO;
     private TextMeshPro LocationText;
 
+    [SerializeField] GameObject Explainer;
     [SerializeField] GameObject audioSource;
 
     [SerializeField] float locationThreshold;
@@ -99,6 +100,9 @@ public class LocationManager : MonoBehaviour
         {
             Input.location.Start();
         }
+
+        // logicManager.SpawnHoca(Explainer);
+
     }
 
     // Update is called once per frame
@@ -137,6 +141,7 @@ public class LocationManager : MonoBehaviour
                     _audioSource.Play();
 
                     objectInitializer.InitializeObjectsInCircle(cafeteriaObjects);
+                    logicManager.SpawnHoca(Explainer);
                 }
             }
             // FENS
@@ -152,6 +157,7 @@ public class LocationManager : MonoBehaviour
                     _audioSource.Play();
 
                     objectInitializer.InitializeObjectsInCircle(FENSObjects);
+                    logicManager.SpawnHoca(Explainer);
 
                 }
 
@@ -170,6 +176,7 @@ public class LocationManager : MonoBehaviour
                     _audioSource.Play();
 
                     objectInitializer.InitializeObjectsInCircle(grassObjects);
+                    logicManager.SpawnHoca(Explainer);
 
                 }
             }
@@ -186,6 +193,7 @@ public class LocationManager : MonoBehaviour
                     _audioSource.Play();
 
                     objectInitializer.InitializeObjectsInCircle(FMANObjects);
+                    logicManager.SpawnHoca(Explainer);
 
                 }
             }
@@ -202,6 +210,7 @@ public class LocationManager : MonoBehaviour
                     _audioSource.Play();
 
                     objectInitializer.InitializeObjectsInCircle(ICObjects);
+                    logicManager.SpawnHoca(Explainer);
 
                 }
             }
@@ -218,6 +227,7 @@ public class LocationManager : MonoBehaviour
                     _audioSource.Play();
 
                     objectInitializer.InitializeObjectsInCircle(DormObjects);
+                    logicManager.SpawnHoca(Explainer);
 
                 }
             }
