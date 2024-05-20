@@ -1116,14 +1116,21 @@ MonoBehaviour:
   LocationTextGO: {fileID: 663214943}
   Explainer: {fileID: 2648760251055541476, guid: 9c053b8a69ede554d9951214dc828445, type: 3}
   audioSource: {fileID: 1803699690}
-  locationThreshold: 50
+  locationThreshold: 60
   cafeteriaLatitude: 40.891388
   cafeteriaLongitude: 29.379889
   cafeteriaObjects:
   - {fileID: 1797056699924840, guid: 07f95da47d340af46b603c05bffc1cde, type: 3}
+  - {fileID: 100000, guid: 214315961896cb246a09ddccf67044d7, type: 3}
+  - {fileID: 100000, guid: c7babd0d9f849c9449d1c29e86f6245f, type: 3}
+  - {fileID: 100000, guid: e0104657a83d1374b8e7cda818970954, type: 3}
   - {fileID: 1181917849304620, guid: 985e26fbc81357349904fd1b56692048, type: 3}
+  - {fileID: 100000, guid: 292237ffd3dc1444c828be3c90e1d862, type: 3}
+  - {fileID: 100000, guid: 612f08e447938e2458702979247cb8cc, type: 3}
   - {fileID: 1449411819928282, guid: 91dc1ab115d03f04b930f9e619fb953f, type: 3}
-  - {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
+  - {fileID: 100000, guid: f9e7ed08898d80148b9f645cd07c8b8e, type: 3}
+  - {fileID: 100000, guid: 3882ee1bc1bdf284b8872917c3979145, type: 3}
+  - {fileID: 100000, guid: 8db774d63ffa4304fb8dddd6116ead54, type: 3}
   CafeteriaClip: {fileID: 8300000, guid: 27ba39897c91e6546847e099cea84e1d, type: 3}
   ICLatitude: 40.89021
   ICLongitude: 29.37744
@@ -1148,7 +1155,13 @@ MonoBehaviour:
   grassLatitude: 40.891346
   grassLongitude: 29.379158
   grassObjects:
-  - {fileID: 3250780093056716959, guid: 876481ee83f852b49901155a05d155d5, type: 3}
+  - {fileID: 100000, guid: da1981c3ee8ea7e4186a753e15495628, type: 3}
+  - {fileID: 100000, guid: 41ba2a6f1d128f94eba95e5213a81254, type: 3}
+  - {fileID: 100000, guid: b332dc24cbb08144da2f112f82406700, type: 3}
+  - {fileID: 100000, guid: 821158ae724ce854e920539f935295b8, type: 3}
+  - {fileID: 100000, guid: f1c3f8e347f55f44e98e7ea73efac66e, type: 3}
+  - {fileID: 100000, guid: ab34fd65b601dab41915f4e874408d28, type: 3}
+  - {fileID: 100000, guid: f74defbe1b9a23449aef9a881263fe0c, type: 3}
   GrassClip: {fileID: 8300000, guid: 69ae4cb0d1776f94faa0c3743d0730b2, type: 3}
   FENSLatitude: 40.890663
   FENSLongitude: 29.379745
