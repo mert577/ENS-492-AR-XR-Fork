@@ -71,7 +71,7 @@ public class LogicManager : MonoBehaviour
 
     public void GoToHandScene()
     {
-        SceneManager.LoadScene("HandScene");
+        SceneManager.LoadScene("ExampleInteraction");
     }
 
 
