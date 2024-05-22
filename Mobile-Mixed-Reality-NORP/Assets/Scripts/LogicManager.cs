@@ -69,6 +69,11 @@ public class LogicManager : MonoBehaviour
         SceneManager.LoadScene("SabanciLocation");
     }
 
+    public void GoToHandScene()
+    {
+        SceneManager.LoadScene("HandScene");
+    }
+
 
 
 

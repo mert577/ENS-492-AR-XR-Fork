@@ -188,6 +188,15 @@ public class LookInteraction : MonoBehaviour
                     }
                     break;
 
+                case InteractableType.GotoHandScene:
+                    StartLookInteraction(collidedUI);
+                    if (timeElapsed >= requiredTime)
+                    {
+                        logicManager.GoToHandScene();
+                        AdjustLoadingMaskBack(loadingMask);
+                    }
+                    break;
+
                 default:
                     AdjustLoadingMaskBack(loadingMask);
                     break;

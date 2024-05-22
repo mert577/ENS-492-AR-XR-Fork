@@ -24,4 +24,5 @@ public enum InteractableType
     KursatHocaDialog2,
     KursatHocaDialog3,
     GotoLocationScene,
+    GotoHandScene,
 }
