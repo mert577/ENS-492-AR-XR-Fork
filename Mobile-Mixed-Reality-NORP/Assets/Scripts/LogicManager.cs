@@ -74,7 +74,10 @@ public class LogicManager : MonoBehaviour
         SceneManager.LoadScene("ExampleInteraction");
     }
 
-
+    public void GoToOpenCVScene()
+    {
+        SceneManager.LoadScene("HandScene");
+    }
 
 
 

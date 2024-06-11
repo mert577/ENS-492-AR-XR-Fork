@@ -197,6 +197,15 @@ public class LookInteraction : MonoBehaviour
                     }
                     break;
 
+                case InteractableType.GotoOpenCVScene:
+                    StartLookInteraction(collidedUI);
+                    if (timeElapsed >= requiredTime)
+                    {
+                        logicManager.GoToOpenCVScene();
+                        AdjustLoadingMaskBack(loadingMask);
+                    }
+                    break;
+
                 default:
                     AdjustLoadingMaskBack(loadingMask);
                     break;

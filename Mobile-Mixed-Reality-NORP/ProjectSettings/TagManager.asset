@@ -9,6 +9,11 @@ TagManager:
   - KursatHoca
   - TempLocationObject
   - TargetPosition
+  - baseSDK
+  - particle
+  - UMAIgnore
+  - Fireball
+  - Enemy
   layers:
   - Default
   - TransparentFX
