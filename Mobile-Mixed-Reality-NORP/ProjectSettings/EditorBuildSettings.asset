@@ -18,8 +18,8 @@ EditorBuildSettings:
     path: Assets/Scenes/HandScene.unity
     guid: 49b51c03fae8350449791c40003b076c
   - enabled: 1
-    path: Assets/ManoMotion ARFoundation/Examples/Inetraction/ExampleInteraction.unity
-    guid: 27f43207c9bffcb49bcf1d568179f758
+    path: Assets/Scenes/HandGameAdvanced.unity
+    guid: 0daffbb51e6b39540bd74046e539831b
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: cf911a4f26453c8479858204ee67be9b, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 00445543dcf13e24fb776ef3a2dbe2c8, type: 2}

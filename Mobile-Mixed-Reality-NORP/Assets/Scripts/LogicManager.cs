@@ -79,6 +79,11 @@ public class LogicManager : MonoBehaviour
         SceneManager.LoadScene("HandScene");
     }
 
+    public void GoToHandGameAdvancedScene()
+    {
+        SceneManager.LoadScene("HandGameAdvanced");
+    }
+
 
 
 

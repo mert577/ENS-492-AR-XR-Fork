@@ -14,6 +14,7 @@ TagManager:
   - UMAIgnore
   - Fireball
   - Enemy
+  - MainMusic
   layers:
   - Default
   - TransparentFX

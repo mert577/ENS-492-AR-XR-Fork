@@ -21,15 +21,20 @@ public class LookInteraction : MonoBehaviour
     private float timeElapsed = 0f;
     [SerializeField] float requiredTime;
 
+    private AdvancedGameManager advancedGameManager;
 
     private GameObject ErkayHocaScene;
     private GameObject KursatHocaScene;
 
+    private GameObject mainMusic;
 
     // Start is called before the first frame update
     void Start()
     {
         logicManager = FindObjectOfType<LogicManager>();
+        advancedGameManager = FindObjectOfType<AdvancedGameManager>();
+        mainMusic = GameObject.FindWithTag("MainMusic");
+
     }
 
     // Update is called once per frame
@@ -203,6 +208,64 @@ public class LookInteraction : MonoBehaviour
                     {
                         logicManager.GoToOpenCVScene();
                         AdjustLoadingMaskBack(loadingMask);
+                    }
+                    break;
+
+                case InteractableType.GotoHandGameAdvancedScene:
+                    StartLookInteraction(collidedUI);
+                    if (timeElapsed >= requiredTime)
+                    {
+                        logicManager.GoToHandGameAdvancedScene();
+                        AdjustLoadingMaskBack(loadingMask);
+                    }
+                    break;
+
+                case InteractableType.DestroyGreenDisk:
+                    if (advancedGameManager != null)
+                    {
+                        StartLookInteraction(collidedUI);
+                        if (timeElapsed >= requiredTime)
+                        {
+                            advancedGameManager.DestroyFirstGreenDisk(false);
+                            AdjustLoadingMaskBack(loadingMask);
+                        }
+                    }
+
+                    break;
+
+                case InteractableType.DestroyBlueDisk:
+                    if (advancedGameManager != null)
+                    {
+                        StartLookInteraction(collidedUI);
+                        if (timeElapsed >= requiredTime)
+                        {
+                            advancedGameManager.DestroyFirstBlueDisk(false);
+                            AdjustLoadingMaskBack(loadingMask);
+                        }
+                    }
+                    break;
+
+                case InteractableType.DestroyRedDisk:
+                    if (advancedGameManager != null)
+                    {
+                        StartLookInteraction(collidedUI);
+                        if (timeElapsed >= requiredTime)
+                        {
+                            advancedGameManager.DestroyFirstRedDisk(false);
+                            AdjustLoadingMaskBack(loadingMask);
+                        }
+                    }
+                    break;
+
+                case InteractableType.OnOffVolume:
+                    if (mainMusic != null)
+                    {
+                        StartLookInteraction(collidedUI);
+                        if (timeElapsed >= requiredTime)
+                        {
+                            advancedGameManager.ToggleMusic(mainMusic);
+                            AdjustLoadingMaskBack(loadingMask);
+                        }
                     }
                     break;
 

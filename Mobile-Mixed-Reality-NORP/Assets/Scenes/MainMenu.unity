@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -177,11 +177,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5009531011465614580, guid: ff79ef43574379c4e8fbea191962fc27, type: 3}
       propertyPath: m_text
-      value: Hand Tracking Game
+      value: Disk Game
       objectReference: {fileID: 0}
     - target: {fileID: 5339724298182559089, guid: ff79ef43574379c4e8fbea191962fc27, type: 3}
       propertyPath: interactableType
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -642,7 +642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5009531011465614580, guid: ff79ef43574379c4e8fbea191962fc27, type: 3}
       propertyPath: m_text
-      value: OpenCV Tracking (Not Ready)
+      value: Hand Tracking Game
       objectReference: {fileID: 0}
     - target: {fileID: 5339724298182559089, guid: ff79ef43574379c4e8fbea191962fc27, type: 3}
       propertyPath: interactableType
@@ -1172,7 +1172,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.59748423, g: 0.426506, b: 0.46893424, a: 1}
+  m_BackGroundColor: {r: 0.42745098, g: 0.44314307, b: 0.59607846, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

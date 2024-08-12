@@ -26,4 +26,9 @@ public enum InteractableType
     GotoLocationScene,
     GotoHandScene,
     GotoOpenCVScene,
+    GotoHandGameAdvancedScene,
+    DestroyBlueDisk,
+    DestroyGreenDisk,
+    DestroyRedDisk,
+    OnOffVolume,
 }
