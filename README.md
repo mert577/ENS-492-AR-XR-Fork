@@ -1,1 +1,0 @@
-# Compatible-Mixed-Reality-Environment
